@@ -6,18 +6,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.udojava.evalex.Expression;
+
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mAC, m1, m2, m3, m4, m5, m6, m7, m8, m9, m0, mHasil, mTambah, mKurang, mKali, mBagi, mDot;
+    Button mAC, m1, m2, m3, m4, m5, m6, m7, m8, m9, m0, mHasil, mTambah, mKurang, mKali, mBagi, mDot, mKBuka, mKTutup;
     EditText edt;
     String nomor = "";
-    int pilih = 0;
-    Double nomorAwal = 0.0;
 
     private void initUI() {
+        mKBuka = findViewById(R.id.kBuka);
+        mKTutup = findViewById(R.id.kTutup);
         mAC = findViewById(R.id.ac);
         mDot = findViewById(R.id.dot);
         m1 = findViewById(R.id.satu);
@@ -39,10 +43,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initBtn() {
+        mKBuka.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nomor += "(";
+                edt.setText(nomor);
+            }
+        });
+        mKTutup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nomor += ")";
+                edt.setText(nomor);
+            }
+        });
         mDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nomor+=".";
+                nomor += ".";
                 edt.setText(nomor);
             }
         });
@@ -126,58 +144,39 @@ public class MainActivity extends AppCompatActivity {
         mHasil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pilih == 1){
-                    Double hasil = nomorAwal - Double.parseDouble(edt.getText().toString());
-                    edt.setText(hasil.toString());
-                    nomor = "";
-                } else if (pilih == 2){
-                    Double hasil = nomorAwal + Double.parseDouble(edt.getText().toString());
-                    edt.setText(hasil.toString());
-                    nomor = "";
-                } else if (pilih == 3){
-                    Double hasil = nomorAwal / Double.parseDouble(edt.getText().toString());
-                    edt.setText(hasil.toString());
-                    nomor = "";
-                } else if (pilih == 4){
-                    Double hasil = nomorAwal * Double.parseDouble(edt.getText().toString());
-                    edt.setText(hasil.toString());
-                    nomor = "";
-                }
+                DecimalFormat df = new DecimalFormat("#,###");
+                Expression e = new Expression(nomor);
+                BigDecimal hasil = e.eval();
+                edt.setText(df.format(hasil));
+                nomor = "";
             }
         });
         mKurang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nomorAwal = Double.parseDouble(edt.getText().toString());
-                pilih = 1;
-                edt.setText(" - ");
+                nomor += "-";
+                edt.setText(nomor);
             }
         });
         mTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nomorAwal = Double.parseDouble(edt.getText().toString());
-                pilih = 2;
-                nomor = "";
-                edt.setText(" + ");
+                nomor += "+";
+                edt.setText(nomor);
             }
         });
         mBagi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nomorAwal = Double.parseDouble(edt.getText().toString());
-                pilih = 3;
-                nomor = "";
-                edt.setText(" / ");
+                nomor += "/";
+                edt.setText(nomor);
             }
         });
         mKali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nomorAwal = Double.parseDouble(edt.getText().toString());
-                pilih = 4;
-                nomor = "";
-                edt.setText(" * ");
+                nomor += "*";
+                edt.setText(nomor);
             }
         });
     }
