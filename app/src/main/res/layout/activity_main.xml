@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#fff">
+
+    <GridLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:columnCount="4"
+        android:padding="5dp"
+        android:rowCount="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/ac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AC" />
+
+        <EditText
+            android:layout_margin="5dp"
+            android:id="@+id/edt"
+            android:inputType="none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="3"
+            android:background="#fff"/>
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/bagi"
+            android:text="/" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/kali"
+            android:text="*" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/kurang"
+            android:text="-" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/tambah"
+            android:text="+" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/tujuh"
+            android:text="7" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/delapan"
+            android:text="8" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/sembilan"
+            android:text="9" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/samadengan"
+            android:text="="
+            android:layout_height="165dp"
+            android:layout_rowSpan="3"/>
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/empat"
+            android:text="4" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/lima"
+            android:text="5" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/enam"
+            android:text="6" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/satu"
+            android:text="1" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/dua"
+            android:text="2" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/tiga"
+            android:text="3" />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/dot"
+            android:text="." />
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/nol"
+            android:text="0"
+            android:layout_gravity="start"
+            android:layout_columnSpan="2"/>
+    </GridLayout>
+
+</android.support.constraint.ConstraintLayout>
